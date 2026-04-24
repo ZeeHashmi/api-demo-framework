@@ -6,7 +6,8 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {"test": "playwright test"},
+  "scripts": {"test": "playwright test",
+  "test:report": "playwright test --reporter=html" } ,
   "keywords": [],
   "author": "",
   "license": "ISC",
