@@ -1,0 +1,35 @@
+name: Playwright API CI - Zee.Hashmi
+
+# When does this run?
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  api-tests:
+    name: Run API Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Get your code from GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Node environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Install Playwright browsers (required even for API context)
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      # Step 5: Run tests
+      - name: Run Playwright API tests
+        run: npx playwright test
